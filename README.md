@@ -25,3 +25,7 @@ These commands are used to run and test the project respectively.
 - `dbt test`
 
 The test includes a generic test and two individual tests.
+
+Ref: 
+- [dbt](https://docs.getdbt.com/docs/core/installation-overview)
+- [dbt-snowflake](https://docs.getdbt.com/docs/core/connect-data-platform/snowflake-setup)
