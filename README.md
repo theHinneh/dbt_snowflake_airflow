@@ -50,7 +50,3 @@ Your dbt-dag project contains the following files and folders:
 # Deploying Your Project
 
 To deploy your dbt models to a production environment, follow the instructions on the [dbt documentation](https://docs.getdbt.com/docs/deploying).
-
-# Contact
-
-The dbt-dag project is maintained with love by the dbt community. To report a bug or suggest a change, reach out to our support.
