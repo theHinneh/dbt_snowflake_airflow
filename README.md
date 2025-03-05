@@ -1,48 +1,56 @@
-Overview
-========
+# Overview
 
-Welcome to Astronomer! This project was generated after you ran 'astro dev init' using the Astronomer CLI. This readme describes the contents of the project, as well as how to run Apache Airflow on your local machine.
+Welcome to the dbt-dag project! This project was generated to help you manage and run your dbt models and DAGs. This readme describes the contents of the project, as well as how to run and deploy your dbt models.
 
-Project Contents
-================
+# Project Contents
 
-Your Astro project contains the following files and folders:
+Your dbt-dag project contains the following files and folders:
 
-- dags: This folder contains the Python files for your Airflow DAGs. By default, this directory includes one example DAG:
-    - `example_astronauts`: This DAG shows a simple ETL pipeline example that queries the list of astronauts currently in space from the Open Notify API and prints a statement for each astronaut. The DAG uses the TaskFlow API to define tasks in Python, and dynamic task mapping to dynamically print a statement for each astronaut. For more on how this DAG works, see our [Getting started tutorial](https://www.astronomer.io/docs/learn/get-started-with-airflow).
-- Dockerfile: This file contains a versioned Astro Runtime Docker image that provides a differentiated Airflow experience. If you want to execute other commands or overrides at runtime, specify them here.
-- include: This folder contains any additional files that you want to include as part of your project. It is empty by default.
-- packages.txt: Install OS-level packages needed for your project by adding them to this file. It is empty by default.
-- requirements.txt: Install Python packages needed for your project by adding them to this file. It is empty by default.
-- plugins: Add custom or community plugins for your project to this file. It is empty by default.
-- airflow_settings.yaml: Use this local-only file to specify Airflow Connections, Variables, and Pools instead of entering them in the Airflow UI as you develop DAGs in this project.
+- `models`: This folder contains your dbt models. By default, this directory includes example models to help you get started.
+- `snapshots`: This folder contains your dbt snapshots. It is empty by default.
+- `tests`: This folder contains your dbt tests. It is empty by default.
+- `macros`: This folder contains your dbt macros. It is empty by default.
+- `analysis`: This folder contains your dbt analysis files. It is empty by default.
+- `data`: This folder contains your dbt seed files. It is empty by default.
+- `logs`: This folder contains your dbt log files. It is empty by default.
+- `target`: This folder contains your dbt compiled files. It is empty by default.
+- `dbt_project.yml`: This file contains the configuration for your dbt project.
+- `profiles.yml`: This file contains the configuration for your dbt profiles.
 
-Deploy Your Project Locally
-===========================
+# Running Your Project Locally
 
-1. Start Airflow on your local machine by running 'astro dev start'.
+1. Install dbt on your local machine by following the instructions on the [dbt documentation](https://docs.getdbt.com/docs/installation).
 
-This command will spin up 4 Docker containers on your machine, each for a different Airflow component:
+2. Set up your dbt profiles by editing the `profiles.yml` file to include your database connection details.
 
-- Postgres: Airflow's Metadata Database
-- Webserver: The Airflow component responsible for rendering the Airflow UI
-- Scheduler: The Airflow component responsible for monitoring and triggering tasks
-- Triggerer: The Airflow component responsible for triggering deferred tasks
+3. Run your dbt models by executing the following command in your terminal:
 
-2. Verify that all 4 Docker containers were created by running 'docker ps'.
+    ```sh
+    dbt run
+    ```
 
-Note: Running 'astro dev start' will start your project with the Airflow Webserver exposed at port 8080 and Postgres exposed at port 5432. If you already have either of those ports allocated, you can either [stop your existing Docker containers or change the port](https://www.astronomer.io/docs/astro/cli/troubleshoot-locally#ports-are-not-available-for-my-local-airflow-webserver).
+4. Test your dbt models by executing the following command in your terminal:
 
-3. Access the Airflow UI for your local Airflow project. To do so, go to http://localhost:8080/ and log in with 'admin' for both your Username and Password.
+    ```sh
+    dbt test
+    ```
 
-You should also be able to access your Postgres Database at 'localhost:5432/postgres'.
+5. Generate documentation for your dbt models by executing the following command in your terminal:
 
-Deploy Your Project to Astronomer
-=================================
+    ```sh
+    dbt docs generate
+    ```
 
-If you have an Astronomer account, pushing code to a Deployment on Astronomer is simple. For deploying instructions, refer to Astronomer documentation: https://www.astronomer.io/docs/astro/deploy-code/
+6. Serve the generated documentation by executing the following command in your terminal:
 
-Contact
-=======
+    ```sh
+    dbt docs serve
+    ```
 
-The Astronomer CLI is maintained with love by the Astronomer team. To report a bug or suggest a change, reach out to our support.
+# Deploying Your Project
+
+To deploy your dbt models to a production environment, follow the instructions on the [dbt documentation](https://docs.getdbt.com/docs/deploying).
+
+# Contact
+
+The dbt-dag project is maintained with love by the dbt community. To report a bug or suggest a change, reach out to our support.
